@@ -1,0 +1,1687 @@
+<!doctype html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover"
+        />
+        <title>Тамагочи: Рустам 💖</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                background: #ffffff;
+                min-height: 100vh;
+                font-family:
+                    "Segoe UI",
+                    "Nunito",
+                    system-ui,
+                    -apple-system,
+                    sans-serif;
+                margin: 0;
+                position: relative;
+                overflow: hidden;
+                width: 100vw;
+                height: 100vh;
+                cursor: default;
+            }
+
+            .animated-bg {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 0;
+                pointer-events: none;
+                background-color: #ffffff;
+                background-image:
+                    radial-gradient(
+                        circle at 20% 30%,
+                        rgba(255, 182, 193, 0.12) 0%,
+                        transparent 50%
+                    ),
+                    radial-gradient(
+                        circle at 80% 70%,
+                        rgba(255, 218, 185, 0.1) 0%,
+                        transparent 50%
+                    ),
+                    radial-gradient(
+                        circle at 50% 50%,
+                        rgba(255, 228, 225, 0.08) 0%,
+                        transparent 60%
+                    );
+                animation: bgMove 20s ease-in-out infinite;
+            }
+
+            .bg-pattern {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 0;
+                pointer-events: none;
+                opacity: 0.25;
+                background-image:
+                    repeating-linear-gradient(
+                        45deg,
+                        transparent,
+                        transparent 35px,
+                        rgba(255, 182, 193, 0.04) 35px,
+                        rgba(255, 182, 193, 0.04) 36px
+                    ),
+                    repeating-linear-gradient(
+                        -45deg,
+                        transparent,
+                        transparent 35px,
+                        rgba(255, 218, 185, 0.04) 35px,
+                        rgba(255, 218, 185, 0.04) 36px
+                    );
+                animation: patternMove 30s linear infinite;
+            }
+
+            .floating-hearts {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 0;
+                pointer-events: none;
+            }
+
+            .heart {
+                position: absolute;
+                font-size: 1.5rem;
+                opacity: 0.12;
+                animation: floatHeart 8s ease-in-out infinite;
+            }
+
+            .heart:nth-child(1) {
+                top: 10%;
+                left: 5%;
+                animation-delay: 0s;
+                font-size: 1.2rem;
+            }
+            .heart:nth-child(2) {
+                top: 20%;
+                left: 85%;
+                animation-delay: 1.5s;
+                font-size: 1.8rem;
+            }
+            .heart:nth-child(3) {
+                top: 60%;
+                left: 10%;
+                animation-delay: 3s;
+                font-size: 1.4rem;
+            }
+            .heart:nth-child(4) {
+                top: 75%;
+                left: 80%;
+                animation-delay: 4.5s;
+                font-size: 1.6rem;
+            }
+            .heart:nth-child(5) {
+                top: 40%;
+                left: 50%;
+                animation-delay: 2s;
+                font-size: 1.3rem;
+            }
+            .heart:nth-child(6) {
+                top: 85%;
+                left: 30%;
+                animation-delay: 5s;
+                font-size: 1.5rem;
+            }
+            .heart:nth-child(7) {
+                top: 15%;
+                left: 40%;
+                animation-delay: 6s;
+                font-size: 1.1rem;
+            }
+            .heart:nth-child(8) {
+                top: 50%;
+                left: 70%;
+                animation-delay: 3.5s;
+                font-size: 1.7rem;
+            }
+
+            @keyframes bgMove {
+                0%,
+                100% {
+                    transform: scale(1) translate(0, 0);
+                }
+                25% {
+                    transform: scale(1.05) translate(1%, -1%);
+                }
+                50% {
+                    transform: scale(1.02) translate(-1%, 1%);
+                }
+                75% {
+                    transform: scale(1.03) translate(0.5%, 0.5%);
+                }
+            }
+
+            @keyframes patternMove {
+                0% {
+                    background-position: 0 0;
+                }
+                100% {
+                    background-position: 100px 100px;
+                }
+            }
+
+            @keyframes floatHeart {
+                0%,
+                100% {
+                    transform: translateY(0) rotate(0deg);
+                    opacity: 0.08;
+                }
+                25% {
+                    transform: translateY(-20px) rotate(5deg);
+                    opacity: 0.15;
+                }
+                50% {
+                    transform: translateY(-10px) rotate(-3deg);
+                    opacity: 0.1;
+                }
+                75% {
+                    transform: translateY(-30px) rotate(2deg);
+                    opacity: 0.13;
+                }
+            }
+
+            .decor-item {
+                position: absolute;
+                font-size: 2.5rem;
+                z-index: 5;
+                pointer-events: none;
+                animation: decorFloat 3s ease-in-out infinite;
+                filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+                transition: all 0.5s ease;
+            }
+
+            .decor-item.tv {
+                top: 8%;
+                left: 5%;
+                animation-delay: 0s;
+            }
+            .decor-item.lamp {
+                top: 5%;
+                right: 8%;
+                animation-delay: 0.5s;
+            }
+            .decor-item.plant {
+                bottom: 15%;
+                left: 3%;
+                animation-delay: 1s;
+            }
+            .decor-item.books {
+                bottom: 20%;
+                right: 5%;
+                animation-delay: 1.5s;
+            }
+            .decor-item.cookie {
+                top: 40%;
+                left: 8%;
+                animation-delay: 2s;
+                font-size: 1.8rem;
+            }
+            .decor-item.bed {
+                bottom: 8%;
+                left: 50%;
+                transform: translateX(-50%);
+                animation-delay: 2.5s;
+            }
+
+            @keyframes decorFloat {
+                0%,
+                100% {
+                    transform: translateY(0);
+                }
+                50% {
+                    transform: translateY(-8px);
+                }
+            }
+
+            .decor-glow {
+                position: absolute;
+                pointer-events: none;
+                z-index: 4;
+                animation: glowPulse 2s ease-in-out infinite;
+            }
+
+            @keyframes glowPulse {
+                0%,
+                100% {
+                    opacity: 0.3;
+                    transform: scale(1);
+                }
+                50% {
+                    opacity: 0.6;
+                    transform: scale(1.2);
+                }
+            }
+
+            .character {
+                position: absolute;
+                width: 130px;
+                height: 160px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition:
+                    left 2s ease-in-out,
+                    top 2s ease-in-out;
+                filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.1));
+                user-select: none;
+                z-index: 10;
+                pointer-events: auto;
+                cursor: pointer;
+            }
+
+            .character-wrapper {
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .character img {
+                max-width: 100%;
+                max-height: 120px;
+                object-fit: contain;
+                display: block;
+                transition:
+                    filter 0.3s ease,
+                    transform 0.1s ease;
+            }
+
+            .character.facing-right img {
+                transform: scaleX(-1);
+            }
+
+            .character.blushing img {
+                filter: drop-shadow(0 0 8px rgba(255, 100, 100, 0.5))
+                    hue-rotate(-10deg) saturate(1.3) brightness(1.05);
+            }
+
+            .blush-overlay {
+                position: absolute;
+                top: 25%;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 60px;
+                height: 20px;
+                background: radial-gradient(
+                    ellipse,
+                    rgba(255, 150, 150, 0.7) 0%,
+                    transparent 70%
+                );
+                border-radius: 50%;
+                pointer-events: none;
+                opacity: 0;
+                transition: opacity 0.3s ease;
+            }
+
+            .character.blushing .blush-overlay {
+                opacity: 1;
+                animation: blushPulse 1.5s ease-in-out infinite;
+            }
+
+            @keyframes blushPulse {
+                0%,
+                100% {
+                    opacity: 0.6;
+                    transform: translateX(-50%) scale(1);
+                }
+                50% {
+                    opacity: 1;
+                    transform: translateX(-50%) scale(1.2);
+                }
+            }
+
+            .status-badge {
+                font-size: 0.7rem;
+                font-weight: 600;
+                color: #888888;
+                background: rgba(255, 255, 255, 0.9);
+                padding: 0.2rem 0.7rem;
+                border-radius: 1rem;
+                margin-top: 0.2rem;
+                letter-spacing: 0.3px;
+                border: 1px solid #eeeeee;
+                white-space: nowrap;
+                backdrop-filter: blur(4px);
+                z-index: 2;
+            }
+
+            .panic-indicator {
+                position: absolute;
+                top: -15px;
+                right: 15px;
+                font-size: 2rem;
+                animation: panicBounce 0.5s ease-in-out infinite;
+                filter: drop-shadow(0 2px 4px rgba(255, 100, 100, 0.5));
+                display: none;
+                z-index: 11;
+            }
+
+            .panic-indicator.active {
+                display: block;
+            }
+
+            @keyframes panicBounce {
+                0%,
+                100% {
+                    transform: translateY(0) scale(1);
+                }
+                25% {
+                    transform: translateY(-10px) scale(1.2);
+                }
+                50% {
+                    transform: translateY(-5px) scale(1.05);
+                }
+                75% {
+                    transform: translateY(-12px) scale(1.15);
+                }
+            }
+
+            .character.walk-img img {
+                animation: walkBounce 0.6s infinite ease-in-out;
+            }
+            .character.sit-img img {
+                animation: softSit 2.5s infinite ease-in-out;
+                transform: translateY(8px);
+            }
+            .character.eat-img img {
+                animation: nibble 0.3s infinite alternate;
+            }
+            .character.poop-img img {
+                animation: poopStrain 0.5s infinite alternate;
+            }
+            .character.cook-img img {
+                animation: cookingShake 0.4s infinite ease-in-out;
+            }
+            .character.panic-img img {
+                animation: panicShake 0.2s infinite ease-in-out;
+            }
+            .character.sleep-img img {
+                animation: sleepBreathe 3s infinite ease-in-out;
+            }
+            .character.dance-img img {
+                animation: danceMove 0.5s infinite ease-in-out;
+            }
+
+            @keyframes walkBounce {
+                0%,
+                100% {
+                    transform: translateY(0);
+                }
+                50% {
+                    transform: translateY(-6px);
+                }
+            }
+
+            @keyframes softSit {
+                0% {
+                    transform: translateY(8px);
+                }
+                50% {
+                    transform: translateY(12px);
+                }
+                100% {
+                    transform: translateY(8px);
+                }
+            }
+
+            @keyframes nibble {
+                0% {
+                    transform: scale(1);
+                }
+                100% {
+                    transform: scale(1.06);
+                }
+            }
+
+            @keyframes poopStrain {
+                0% {
+                    transform: scale(1) translateY(0);
+                }
+                100% {
+                    transform: scale(0.94) translateY(5px);
+                }
+            }
+
+            @keyframes cookingShake {
+                0% {
+                    transform: translateX(-3px) rotate(-2deg);
+                }
+                50% {
+                    transform: translateX(3px) rotate(2deg);
+                }
+                100% {
+                    transform: translateX(-3px) rotate(-2deg);
+                }
+            }
+
+            @keyframes panicShake {
+                0% {
+                    transform: translateX(-5px);
+                }
+                25% {
+                    transform: translateX(5px);
+                }
+                50% {
+                    transform: translateX(-4px);
+                }
+                75% {
+                    transform: translateX(4px);
+                }
+                100% {
+                    transform: translateX(-2px);
+                }
+            }
+
+            @keyframes sleepBreathe {
+                0%,
+                100% {
+                    transform: scale(1);
+                }
+                50% {
+                    transform: scale(1.03);
+                }
+            }
+
+            @keyframes danceMove {
+                0% {
+                    transform: translateY(0) rotate(-5deg);
+                }
+                50% {
+                    transform: translateY(-10px) rotate(5deg);
+                }
+                100% {
+                    transform: translateY(0) rotate(-5deg);
+                }
+            }
+
+            .emoji-effects {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                pointer-events: none;
+                z-index: 12;
+                width: 200px;
+                height: 200px;
+            }
+
+            .emoji-particle {
+                position: absolute;
+                font-size: 1.5rem;
+                animation: emojiFloat 2s ease-out forwards;
+                opacity: 0;
+                pointer-events: none;
+            }
+
+            @keyframes emojiFloat {
+                0% {
+                    opacity: 1;
+                    transform: translate(0, 0) scale(0.5);
+                }
+                30% {
+                    opacity: 1;
+                    transform: translate(var(--tx), var(--ty)) scale(1.2);
+                }
+                100% {
+                    opacity: 0;
+                    transform: translate(var(--fx), var(--fy)) scale(0.3);
+                }
+            }
+
+            .speech-bubble {
+                position: absolute;
+                background: rgba(255, 255, 255, 0.95);
+                border-radius: 1.5rem 1.5rem 1.5rem 0.3rem;
+                padding: 0.7rem 1rem;
+                font-size: 0.9rem;
+                font-weight: 500;
+                color: #666666;
+                box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+                border: 1px solid #eeeeee;
+                text-align: center;
+                word-break: break-word;
+                max-width: 220px;
+                white-space: normal;
+                backdrop-filter: blur(8px);
+                pointer-events: none;
+                z-index: 20;
+                transition: opacity 0.3s ease;
+            }
+
+            .note-message {
+                position: fixed;
+                top: 20%;
+                left: 50%;
+                transform: translateX(-50%) translateY(-100px);
+                background: #fff9c4;
+                border: 2px solid #ffe082;
+                border-radius: 1rem;
+                padding: 1rem 1.5rem;
+                font-size: 0.95rem;
+                font-weight: 500;
+                color: #5d4037;
+                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+                z-index: 50;
+                opacity: 0;
+                transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+                text-align: center;
+                max-width: 280px;
+                pointer-events: none;
+                font-family: "Segoe UI", cursive;
+            }
+
+            .note-message.show {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+
+            .note-message .note-close {
+                position: absolute;
+                top: 5px;
+                right: 10px;
+                cursor: pointer;
+                font-size: 1.2rem;
+                pointer-events: auto;
+                color: #ffab91;
+            }
+
+            .stats-panel {
+                position: fixed;
+                top: 1rem;
+                right: 1rem;
+                display: flex;
+                gap: 0.5rem;
+                z-index: 30;
+                flex-wrap: wrap;
+            }
+
+            .stat {
+                background: rgba(255, 255, 255, 0.9);
+                border-radius: 2rem;
+                padding: 0.5rem 1rem;
+                display: flex;
+                align-items: center;
+                gap: 0.3rem;
+                font-weight: 600;
+                color: #777777;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+                font-size: 0.9rem;
+                border: 1px solid #f0f0f0;
+                backdrop-filter: blur(8px);
+            }
+
+            .actions {
+                position: fixed;
+                bottom: 1.5rem;
+                left: 50%;
+                transform: translateX(-50%);
+                display: flex;
+                gap: 0.8rem;
+                z-index: 30;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .btn {
+                background: rgba(255, 255, 255, 0.9);
+                border: none;
+                border-radius: 2.5rem;
+                padding: 0.8rem 1.4rem;
+                font-size: 1rem;
+                font-weight: 600;
+                display: flex;
+                align-items: center;
+                gap: 0.4rem;
+                box-shadow:
+                    0 4px 0 #e8e8e8,
+                    0 6px 16px rgba(0, 0, 0, 0.07);
+                color: #888888;
+                cursor: pointer;
+                transition: all 0.08s ease;
+                border: 2px solid #f0f0f0;
+                backdrop-filter: blur(8px);
+                white-space: nowrap;
+            }
+
+            .btn:active {
+                transform: translateY(3px);
+                box-shadow:
+                    0 2px 0 #e0e0e0,
+                    0 4px 12px rgba(0, 0, 0, 0.07);
+                background: #fafafa;
+            }
+
+            @media (max-width: 500px) {
+                .character {
+                    width: 100px;
+                    height: 130px;
+                }
+                .character img {
+                    max-height: 95px;
+                }
+                .btn {
+                    padding: 0.6rem 1rem;
+                    font-size: 0.85rem;
+                }
+                .stat {
+                    padding: 0.4rem 0.7rem;
+                    font-size: 0.8rem;
+                }
+                .speech-bubble {
+                    font-size: 0.8rem;
+                    max-width: 150px;
+                    padding: 0.5rem 0.8rem;
+                }
+                .decor-item {
+                    font-size: 1.8rem;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="animated-bg"></div>
+        <div class="bg-pattern"></div>
+
+        <div class="floating-hearts">
+            <span class="heart">💗</span><span class="heart">💕</span>
+            <span class="heart">💖</span><span class="heart">💝</span>
+            <span class="heart">💗</span><span class="heart">💕</span>
+            <span class="heart">💖</span><span class="heart">💝</span>
+        </div>
+
+        <div class="decor-item tv" id="decorTV">📺</div>
+        <div class="decor-item lamp" id="decorLamp">💡</div>
+        <div class="decor-item plant" id="decorPlant">🪴</div>
+        <div class="decor-item books" id="decorBooks">📚</div>
+        <div class="decor-item cookie" id="decorCookie">🍪</div>
+        <div class="decor-item bed" id="decorBed">🛏️</div>
+
+        <div class="character" id="character">
+            <div class="character-wrapper">
+                <img src="images/idle.png" alt="Рустам" id="characterImg" />
+                <div class="blush-overlay" id="blushOverlay"></div>
+                <span class="panic-indicator" id="panicIndicator">❗</span>
+            </div>
+            <div class="emoji-effects" id="emojiEffects"></div>
+            <span class="status-badge" id="statusBadge">😊 Радостный</span>
+        </div>
+
+        <div class="speech-bubble" id="speechBubble" style="opacity: 0">
+            Привет! Я Рустам 💕
+        </div>
+
+        <div class="note-message" id="noteMessage">
+            <span class="note-close" id="noteClose">✕</span>
+            <span id="noteText">Записка от Рустама 💌</span>
+        </div>
+
+        <div class="stats-panel">
+            <div class="stat">🍔 <span id="hungerDisplay">100</span>%</div>
+            <div class="stat">💧 <span id="thirstDisplay">100</span>%</div>
+            <div class="stat">💖 <span id="affectionDisplay">100</span>%</div>
+        </div>
+
+        <div class="actions">
+            <button class="btn" id="feedBtn">🍰 Кормить</button>
+            <button class="btn" id="waterBtn">🥤 Поить</button>
+            <button class="btn" id="petBtn">✋ Гладить</button>
+            <button class="btn" id="playBtn">🎮 Играть</button>
+        </div>
+
+        <script>
+            (function () {
+                const state = {
+                    hunger: 100,
+                    thirst: 100,
+                    affection: 100,
+                    currentSprite: "stand",
+                    currentStatus: "happy",
+                    lastActionTime: Date.now(),
+                    posX: window.innerWidth / 2 - 65,
+                    posY: window.innerHeight / 2 - 80,
+                    targetX: window.innerWidth / 2 - 65,
+                    targetY: window.innerHeight / 2 - 80,
+                    facingRight: false,
+                    isPanic: false,
+                    isBlushing: false,
+                    interactedWithTV: false,
+                    interactedWithLamp: false,
+                    interactedWithPlant: false,
+                    interactedWithBooks: false,
+                    interactedWithCookie: false,
+                    interactedWithBed: false,
+                    moveInterval: null,
+                    decayInterval: null,
+                    phraseTimer: null,
+                    statusTimer: null,
+                    noteTimer: null,
+                    blushTimer: null,
+                    panicTimeout: null,
+                    activityTimeout: null,
+                    bubbleTimeout: null,
+                    noteTimeout: null,
+                };
+
+                const phrases = {
+                    happy: [
+                        "Ты такой заботливый 💗",
+                        "Мне хорошо с тобой 🥰",
+                        "Ты лучший!",
+                        "Какой уютный день 🏠",
+                        "Я твой мини-парень!",
+                        "Спасибо, что ты рядом 🌸",
+                        "Обними меня скорее!",
+                        "Сегодня отличный день!",
+                        "Я так рад, что ты здесь!",
+                        "Ты делаешь меня счастливым ✨",
+                        "Люблю, когда ты рядом 💝",
+                        "У меня самый лучший хозяин!",
+                        "Хорошее настроение — залог успеха!",
+                        "Давай гулять!",
+                        "Как же я тебя люблю! 💕",
+                    ],
+                    hungry: [
+                        "Я хочу кушать 😋",
+                        "Покорми меня вкусненьким!",
+                        "Животик урчит...",
+                        "Может, перекусим? 🍕",
+                        "Я бы съел что-нибудь вкусное!",
+                        "Я голоден!",
+                        "Давай устроим обед!",
+                        "Чувствую запах еды... 😍",
+                    ],
+                    thirsty: [
+                        "Пить хочется... 💧",
+                        "Водички бы...",
+                        "Горлышко пересохло",
+                        "Холодненькой воды! 🥤",
+                        "Жарко, попить бы...",
+                        "Хочу пить!",
+                    ],
+                    sad: [
+                        "Мне грустно, погладь меня 🥺",
+                        "Не забывай про меня!",
+                        "Мне одиноко...",
+                        "Обними меня, пожалуйста...",
+                        "Мне нужно твоё внимание 💔",
+                    ],
+                    panic: [
+                        "ААА! ЧТО-ТО СТРАШНОЕ! 😱",
+                        "СПАСИ МЕНЯ! 🆘",
+                        "Я В ПАНИКЕ! 💥",
+                        "МНЕ СТРАШНО!!!",
+                        "ЧТО ЭТО БЫЛО?!",
+                    ],
+                    pooping: [
+                        "Эм... я занят... 💩",
+                        "Не смотри на меня! 🙈",
+                        "Сейчас, минуточку...",
+                        "Не входить!",
+                        "Дай мне минутку... 🚽",
+                    ],
+                    cooking: [
+                        "Готовлю что-то вкусное! 👨‍🍳",
+                        "Я шеф-повар! 🍳",
+                        "Будет очень вкусно!",
+                        "Секретный рецепт... 🤫",
+                        "Добавим щепотку любви 💕",
+                        "Пальчики оближешь!",
+                    ],
+                    sleeping: [
+                        "Zzz... я сплю... 💤",
+                        "Не буди, мне снится что-то приятное... 🥱",
+                        "Сладких снов... 🌙",
+                        "Я отдыхаю... zzz",
+                        "Дай поспать ещё 5 минут... 😴",
+                    ],
+                    playing: [
+                        "Давай играть! 🎮",
+                        "Я в игре!",
+                        "Я выигрываю! 🏆",
+                        "Ещё один раунд!",
+                        "Весело-весело! 🎉",
+                    ],
+                    blushing: [
+                        "Ой... мне неловко... 😳",
+                        "Ты меня смущаешь... 💗",
+                        "Я краснею... 🙈",
+                        "Не смотри так на меня...",
+                        "Тук-тук, сердце стучит... 💓",
+                        "Ты такой милый, что я краснею!",
+                        "Скажешь комплимент — растаю...",
+                    ],
+                    love: [
+                        "Я тебя люблю! 💖",
+                        "Ты — моё солнышко ☀️",
+                        "Спасибо, что ты есть у меня 💝",
+                        "Ты делаешь меня самым счастливым! 🥰",
+                        "Каждый день с тобой — подарок 🎁",
+                        "Люблю тебя больше всего на свете! 💕",
+                        "Ты мой самый родной человек 💗",
+                    ],
+                    reminders: [
+                        "Эй! Не забудь меня покормить! 🍔",
+                        "Я проголодался, загляни ко мне! 😋",
+                        "Кажется, я хочу пить... 💧",
+                        "Не забывай про меня, ладно? 🥺",
+                        "Мне нужно немного внимания... 💝",
+                    ],
+                };
+
+                const noteMessages = [
+                    "💌 Привет! Просто хотел сказать, что ты классный!",
+                    "💭 Думаю о тебе... Приходи почаще!",
+                    "🌸 Ты — как весенний цветок в моей жизни!",
+                    "🍪 Я нашёл печеньку! Будешь?",
+                    "📺 Смотрел телевизор, там про любовь показывали... Вспомнил о тебе!",
+                    "💤 Сладких снов! Увидимся утром!",
+                    "🎮 Давай поиграем вместе?",
+                    "💝 Ты самый лучший хозяин на свете!",
+                    "🥰 Я скучал по тебе!",
+                    "✨ Сегодня волшебный день, потому что ты рядом!",
+                ];
+
+                const sprites = {
+                    stand: "images/idle.png",
+                    walk: "images/walk.png",
+                    sit: "images/idle.png",
+                    eat: "images/eating.png",
+                    poop: "images/idle.png",
+                    cook: "images/idle.png",
+                    sleep: "images/idle.png",
+                    dance: "images/idle.png",
+                };
+
+                const statusLabels = {
+                    happy: "😊 Радостный",
+                    walking: "🚶 Гуляет",
+                    pooping: "💩 Какает",
+                    cooking: "👨‍🍳 Готовит",
+                    eating: "🍽️ Кушает",
+                    panic: "😱 Паника!",
+                    sad: "😢 Грустный",
+                    thirsty: "🥤 Хочет пить",
+                    hungry: "🍔 Голодный",
+                    sleeping: "😴 Спит",
+                    playing: "🎮 Играет",
+                    blushing: "😳 Смущается",
+                    watchingTV: "📺 Смотрит ТВ",
+                    reading: "📚 Читает",
+                    withPlant: "🪴 Ухаживает",
+                    withLamp: "💡 Греется",
+                    withCookie: "🍪 Ест печеньку",
+                    withBed: "🛏️ Отдыхает",
+                };
+
+                const characterEl = document.getElementById("character");
+                const characterImg = document.getElementById("characterImg");
+                const blushOverlay = document.getElementById("blushOverlay");
+                const speechEl = document.getElementById("speechBubble");
+                const hungerDisplay = document.getElementById("hungerDisplay");
+                const thirstDisplay = document.getElementById("thirstDisplay");
+                const affectionDisplay =
+                    document.getElementById("affectionDisplay");
+                const feedBtn = document.getElementById("feedBtn");
+                const waterBtn = document.getElementById("waterBtn");
+                const petBtn = document.getElementById("petBtn");
+                const playBtn = document.getElementById("playBtn");
+                const panicIndicator =
+                    document.getElementById("panicIndicator");
+                const statusBadge = document.getElementById("statusBadge");
+                const emojiEffects = document.getElementById("emojiEffects");
+                const noteMessage = document.getElementById("noteMessage");
+                const noteText = document.getElementById("noteText");
+                const noteClose = document.getElementById("noteClose");
+
+                function clamp(value, min, max) {
+                    return Math.min(max, Math.max(min, value));
+                }
+
+                function updateStatsUI() {
+                    hungerDisplay.textContent = Math.round(state.hunger);
+                    thirstDisplay.textContent = Math.round(state.thirst);
+                    affectionDisplay.textContent = Math.round(state.affection);
+                }
+
+                function updateStatusBadge(status) {
+                    state.currentStatus = status;
+                    statusBadge.textContent =
+                        statusLabels[status] || "😊 Радостный";
+                }
+
+                function setPanic(active) {
+                    state.isPanic = active;
+                    if (active) panicIndicator.classList.add("active");
+                    else panicIndicator.classList.remove("active");
+                }
+
+                function setBlush(active) {
+                    state.isBlushing = active;
+                    if (active) characterEl.classList.add("blushing");
+                    else characterEl.classList.remove("blushing");
+                }
+
+                function setFacing(right) {
+                    state.facingRight = right;
+                    if (right) characterEl.classList.add("facing-right");
+                    else characterEl.classList.remove("facing-right");
+                }
+
+                function showNote(text) {
+                    noteText.textContent = text;
+                    noteMessage.classList.add("show");
+                    clearTimeout(state.noteTimeout);
+                    state.noteTimeout = setTimeout(() => {
+                        noteMessage.classList.remove("show");
+                    }, 5000);
+                }
+
+                function hideNote() {
+                    noteMessage.classList.remove("show");
+                    clearTimeout(state.noteTimeout);
+                }
+
+                function spawnEmojiEffects(emojiList, count = 8) {
+                    emojiEffects.innerHTML = "";
+                    for (let i = 0; i < count; i++) {
+                        const particle = document.createElement("span");
+                        particle.className = "emoji-particle";
+                        particle.textContent =
+                            emojiList[
+                                Math.floor(Math.random() * emojiList.length)
+                            ];
+
+                        const angle =
+                            (Math.PI * 2 * i) / count + Math.random() * 0.5;
+                        const distance = 40 + Math.random() * 60;
+                        const tx = Math.cos(angle) * distance;
+                        const ty = Math.sin(angle) * distance - 30;
+                        const fx = Math.cos(angle) * distance * 1.8;
+                        const fy = Math.sin(angle) * distance * 1.8 - 50;
+
+                        particle.style.setProperty("--tx", tx + "px");
+                        particle.style.setProperty("--ty", ty + "px");
+                        particle.style.setProperty("--fx", fx + "px");
+                        particle.style.setProperty("--fy", fy + "px");
+                        particle.style.left = "50%";
+                        particle.style.top = "50%";
+                        particle.style.animationDuration =
+                            1.5 + Math.random() * 1.5 + "s";
+
+                        emojiEffects.appendChild(particle);
+                        setTimeout(() => particle.remove(), 2500);
+                    }
+                }
+
+                function showBubble(text) {
+                    speechEl.textContent = text;
+                    speechEl.style.opacity = "1";
+                    const charRect = characterEl.getBoundingClientRect();
+                    speechEl.style.left =
+                        charRect.left + charRect.width / 2 - 110 + "px";
+                    speechEl.style.top = charRect.top - 60 + "px";
+                    clearTimeout(state.bubbleTimeout);
+                    state.bubbleTimeout = setTimeout(() => {
+                        speechEl.style.opacity = "0";
+                    }, 3500);
+                }
+
+                function updateBubblePosition() {
+                    if (speechEl.style.opacity === "1") {
+                        const charRect = characterEl.getBoundingClientRect();
+                        speechEl.style.left =
+                            charRect.left + charRect.width / 2 - 110 + "px";
+                        speechEl.style.top = charRect.top - 60 + "px";
+                    }
+                }
+
+                function sayRandomFromCategory(category) {
+                    const list = phrases[category] || phrases.happy;
+                    showBubble(list[Math.floor(Math.random() * list.length)]);
+                }
+
+                function sayPhrase(text) {
+                    showBubble(text);
+                }
+
+                function setSprite(type) {
+                    state.currentSprite = type;
+                    characterEl.classList.remove(
+                        "walk-img",
+                        "sit-img",
+                        "eat-img",
+                        "poop-img",
+                        "cook-img",
+                        "panic-img",
+                        "sleep-img",
+                        "dance-img",
+                    );
+
+                    let imgSrc = sprites.stand;
+
+                    switch (type) {
+                        case "walk":
+                            imgSrc = sprites.walk;
+                            characterEl.classList.add("walk-img");
+                            updateStatusBadge("walking");
+                            break;
+                        case "sit":
+                            imgSrc = sprites.sit;
+                            characterEl.classList.add("sit-img");
+                            break;
+                        case "eat":
+                            imgSrc = sprites.eat;
+                            characterEl.classList.add("eat-img");
+                            updateStatusBadge("eating");
+                            spawnEmojiEffects([
+                                "🍰",
+                                "🍕",
+                                "🍔",
+                                "😋",
+                                "🍽️",
+                                "✨",
+                            ]);
+                            break;
+                        case "poop":
+                            imgSrc = sprites.poop;
+                            characterEl.classList.add("poop-img");
+                            updateStatusBadge("pooping");
+                            spawnEmojiEffects(["💩", "🚽", "😅", "🙈"]);
+                            break;
+                        case "cook":
+                            imgSrc = sprites.cook;
+                            characterEl.classList.add("cook-img");
+                            updateStatusBadge("cooking");
+                            spawnEmojiEffects([
+                                "🍳",
+                                "👨‍🍳",
+                                "🔥",
+                                "🥘",
+                                "✨",
+                                "👌",
+                            ]);
+                            break;
+                        case "sleep":
+                            imgSrc = sprites.sleep;
+                            characterEl.classList.add("sleep-img");
+                            updateStatusBadge("sleeping");
+                            spawnEmojiEffects(["💤", "😴", "🌙", "✨"]);
+                            break;
+                        case "dance":
+                            imgSrc = sprites.dance;
+                            characterEl.classList.add("dance-img");
+                            updateStatusBadge("playing");
+                            spawnEmojiEffects(["💃", "🎉", "🎵", "✨", "🎮"]);
+                            break;
+                        case "panic":
+                            imgSrc = sprites.stand;
+                            characterEl.classList.add("panic-img");
+                            updateStatusBadge("panic");
+                            spawnEmojiEffects(["😱", "💥", "❗", "🆘"]);
+                            break;
+                        default:
+                            imgSrc = sprites.stand;
+                    }
+
+                    if (characterImg) {
+                        characterImg.src = imgSrc;
+                        characterImg.alt = type;
+                    }
+                }
+
+                function triggerBlush(duration = 4000) {
+                    setBlush(true);
+                    updateStatusBadge("blushing");
+                    sayRandomFromCategory("blushing");
+                    spawnEmojiEffects(["😳", "💗", "💓", "🙈", "💕"]);
+                    clearTimeout(state.blushTimer);
+                    state.blushTimer = setTimeout(() => {
+                        setBlush(false);
+                        updateStatusBadge("happy");
+                    }, duration);
+                }
+
+                function interactWithDecor(decorType) {
+                    const decorPositions = {
+                        tv: { x: 80, y: 100 },
+                        lamp: { x: window.innerWidth - 120, y: 90 },
+                        plant: { x: 70, y: window.innerHeight - 180 },
+                        books: {
+                            x: window.innerWidth - 130,
+                            y: window.innerHeight - 200,
+                        },
+                        cookie: { x: 90, y: window.innerHeight / 2 },
+                        bed: {
+                            x: window.innerWidth / 2 - 65,
+                            y: window.innerHeight - 160,
+                        },
+                    };
+
+                    const pos = decorPositions[decorType];
+                    if (!pos) return;
+
+                    state.targetX = pos.x;
+                    state.targetY = pos.y;
+                    setFacing(state.targetX > state.posX);
+                    setSprite("walk");
+                    characterEl.style.left = state.targetX + "px";
+                    characterEl.style.top = state.targetY + "px";
+                    state.posX = state.targetX;
+                    state.posY = state.targetY;
+                    updateBubblePosition();
+
+                    clearTimeout(window.arriveTimeout);
+                    window.arriveTimeout = setTimeout(() => {
+                        switch (decorType) {
+                            case "tv":
+                                updateStatusBadge("watchingTV");
+                                sayPhrase(
+                                    "Смотрю телевизор... Интересное шоу! 📺",
+                                );
+                                spawnEmojiEffects(["📺", "🎬", "🍿", "😮"]);
+                                state.interactedWithTV = true;
+                                break;
+                            case "lamp":
+                                updateStatusBadge("withLamp");
+                                sayPhrase("Тепло и уютно... 💡");
+                                spawnEmojiEffects(["💡", "✨", "🔥", "😊"]);
+                                state.interactedWithLamp = true;
+                                break;
+                            case "plant":
+                                updateStatusBadge("withPlant");
+                                sayPhrase(
+                                    "Поливаю цветочек... Расти большой! 🪴",
+                                );
+                                spawnEmojiEffects(["🪴", "💧", "🌱", "✨"]);
+                                state.interactedWithPlant = true;
+                                break;
+                            case "books":
+                                updateStatusBadge("reading");
+                                sayPhrase("Читаю книгу... Очень интересно! 📚");
+                                spawnEmojiEffects(["📚", "📖", "🤓", "✨"]);
+                                state.interactedWithBooks = true;
+                                break;
+                            case "cookie":
+                                updateStatusBadge("withCookie");
+                                sayPhrase("Мм, печенька! Вкуснотища! 🍪");
+                                spawnEmojiEffects(["🍪", "😋", "✨", "💕"]);
+                                state.hunger = clamp(state.hunger + 10, 0, 100);
+                                updateStatsUI();
+                                state.interactedWithCookie = true;
+                                break;
+                            case "bed":
+                                updateStatusBadge("withBed");
+                                sayPhrase(
+                                    "Какая мягкая кроватка... Посижу немного 🛏️",
+                                );
+                                setSprite("sit");
+                                spawnEmojiEffects(["🛏️", "😊", "💤"]);
+                                state.interactedWithBed = true;
+                                break;
+                        }
+
+                        clearTimeout(state.activityTimeout);
+                        state.activityTimeout = setTimeout(() => {
+                            setSprite("stand");
+                            updateStatusBadge("happy");
+                            sayRandomFromCategory("happy");
+                        }, 3000);
+                    }, 2200);
+                }
+
+                function moveToTarget() {
+                    if (state.isPanic) return;
+                    if (
+                        ["eat", "poop", "cook", "sleep"].includes(
+                            state.currentSprite,
+                        )
+                    )
+                        return;
+
+                    const margin = 100;
+                    state.targetX =
+                        margin +
+                        Math.random() * (window.innerWidth - margin * 2 - 130);
+                    state.targetY =
+                        margin +
+                        Math.random() * (window.innerHeight - margin * 2 - 200);
+
+                    setFacing(state.targetX > state.posX);
+                    setSprite("walk");
+                    characterEl.style.left = state.targetX + "px";
+                    characterEl.style.top = state.targetY + "px";
+                    state.posX = state.targetX;
+                    state.posY = state.targetY;
+                    updateBubblePosition();
+
+                    clearTimeout(window.arriveTimeout);
+                    window.arriveTimeout = setTimeout(() => {
+                        if (state.isPanic) return;
+                        arriveAtDestination();
+                    }, 2200);
+                }
+
+                function arriveAtDestination() {
+                    const rand = Math.random();
+                    if (rand < 0.1 && !state.interactedWithTV) {
+                        interactWithDecor("tv");
+                    } else if (rand < 0.2 && !state.interactedWithLamp) {
+                        interactWithDecor("lamp");
+                    } else if (rand < 0.3 && !state.interactedWithPlant) {
+                        interactWithDecor("plant");
+                    } else if (rand < 0.4 && !state.interactedWithBooks) {
+                        interactWithDecor("books");
+                    } else if (rand < 0.5 && !state.interactedWithCookie) {
+                        interactWithDecor("cookie");
+                    } else if (rand < 0.6 && !state.interactedWithBed) {
+                        interactWithDecor("bed");
+                    } else if (rand < 0.7) {
+                        setSprite("poop");
+                        sayRandomFromCategory("pooping");
+                        clearTimeout(state.activityTimeout);
+                        state.activityTimeout = setTimeout(() => {
+                            if (state.currentSprite === "poop") {
+                                setSprite("stand");
+                                updateStatusBadge("happy");
+                                sayPhrase("Всё, полегчало! 😌");
+                            }
+                        }, 3000);
+                    } else if (rand < 0.8) {
+                        setSprite("cook");
+                        sayRandomFromCategory("cooking");
+                        clearTimeout(state.activityTimeout);
+                        state.activityTimeout = setTimeout(() => {
+                            if (state.currentSprite === "cook") {
+                                setSprite("stand");
+                                updateStatusBadge("happy");
+                                sayPhrase("Блюдо готово! 🍽️");
+                            }
+                        }, 4000);
+                    } else if (rand < 0.9) {
+                        setSprite("sleep");
+                        sayRandomFromCategory("sleeping");
+                        clearTimeout(state.activityTimeout);
+                        state.activityTimeout = setTimeout(() => {
+                            if (state.currentSprite === "sleep") {
+                                setSprite("stand");
+                                updateStatusBadge("happy");
+                                sayPhrase("Выспался! Бодр и свеж! ☀️");
+                            }
+                        }, 5000);
+                    } else {
+                        setSprite("dance");
+                        sayRandomFromCategory("playing");
+                        clearTimeout(state.activityTimeout);
+                        state.activityTimeout = setTimeout(() => {
+                            if (state.currentSprite === "dance") {
+                                setSprite("stand");
+                                updateStatusBadge("happy");
+                            }
+                        }, 3000);
+                    }
+                }
+
+                function triggerPanic() {
+                    if (state.isPanic) return;
+                    setPanic(true);
+                    setSprite("panic");
+                    sayRandomFromCategory("panic");
+                    const panicDuration = 3000 + Math.random() * 2000;
+                    clearTimeout(state.panicTimeout);
+                    state.panicTimeout = setTimeout(() => {
+                        setPanic(false);
+                        setSprite("stand");
+                        updateStatusBadge("happy");
+                        sayPhrase("Фух, всё хорошо... спасибо! 💗");
+                    }, panicDuration);
+                }
+
+                function sendNote() {
+                    const note =
+                        noteMessages[
+                            Math.floor(Math.random() * noteMessages.length)
+                        ];
+                    showNote(note);
+                }
+
+                function sendReminder() {
+                    if (state.hunger < 40) {
+                        showNote(
+                            "🔔 Напоминание: Рустам хочет кушать! Покорми меня, пожалуйста 🍔",
+                        );
+                    } else if (state.thirst < 40) {
+                        showNote(
+                            "🔔 Напоминание: Я хочу пить! Принеси водички 💧",
+                        );
+                    } else if (state.affection < 40) {
+                        showNote(
+                            "🔔 Напоминание: Мне нужно внимание... Погладь меня! 🥺",
+                        );
+                    }
+                }
+
+                function sendLoveNote() {
+                    const lovePhrases = phrases.love;
+                    const msg =
+                        "💌 " +
+                        lovePhrases[
+                            Math.floor(Math.random() * lovePhrases.length)
+                        ];
+                    showNote(msg);
+                }
+
+                function feed() {
+                    if (state.isPanic) {
+                        sayPhrase("Я в панике, не до еды! 😱");
+                        return;
+                    }
+                    if (state.hunger >= 100) {
+                        sayPhrase("Я уже сыт! 😊");
+                        setSprite("stand");
+                        updateStatusBadge("happy");
+                        return;
+                    }
+                    state.hunger = clamp(state.hunger + 30, 0, 100);
+                    updateStatsUI();
+                    setSprite("eat");
+                    sayPhrase("Ням-ням! Спасибо, вкусно! 💖");
+                    clearTimeout(window.eatTimeout);
+                    window.eatTimeout = setTimeout(() => {
+                        if (state.currentSprite === "eat") {
+                            setSprite("stand");
+                            updateStatusBadge("happy");
+                            if (Math.random() < 0.4) triggerBlush(2500);
+                        }
+                    }, 2000);
+                }
+
+                function water() {
+                    if (state.isPanic) {
+                        sayPhrase("Не могу пить, паника! 😱");
+                        return;
+                    }
+                    if (state.thirst >= 100) {
+                        sayPhrase("Я не хочу пить 💧");
+                        setSprite("stand");
+                        updateStatusBadge("happy");
+                        return;
+                    }
+                    state.thirst = clamp(state.thirst + 30, 0, 100);
+                    updateStatsUI();
+                    setSprite("sit");
+                    updateStatusBadge("happy");
+                    sayPhrase("Вкусная водичка! Спасибо! 🥤");
+                    spawnEmojiEffects(["💧", "🥤", "✨"]);
+                    clearTimeout(window.drinkTimeout);
+                    window.drinkTimeout = setTimeout(() => {
+                        if (state.currentSprite === "sit") setSprite("stand");
+                    }, 1800);
+                }
+
+                function pet() {
+                    if (state.isPanic) {
+                        setPanic(false);
+                        clearTimeout(state.panicTimeout);
+                        updateStatusBadge("happy");
+                        sayPhrase("Спасибо, что успокоил... Ты лучший 💗");
+                        setSprite("sit");
+                        spawnEmojiEffects(["💗", "🥰", "💕"]);
+                        setTimeout(() => {
+                            if (state.currentSprite === "sit")
+                                setSprite("stand");
+                            triggerBlush(3000);
+                        }, 1500);
+                        return;
+                    }
+                    state.affection = clamp(state.affection + 25, 0, 100);
+                    updateStatsUI();
+                    setSprite("sit");
+                    updateStatusBadge("happy");
+                    sayPhrase("Мр-р-р, приятно! Обожаю тебя 🥰");
+                    spawnEmojiEffects(["💗", "💕", "💖", "🥰", "✨"]);
+                    if (Math.random() < 0.5) triggerBlush(3500);
+                    clearTimeout(window.petTimeout);
+                    window.petTimeout = setTimeout(() => {
+                        if (state.currentSprite === "sit") setSprite("stand");
+                    }, 2000);
+                }
+
+                function play() {
+                    if (state.isPanic) {
+                        sayPhrase("Не могу играть, мне страшно! 😱");
+                        return;
+                    }
+                    setSprite("dance");
+                    sayRandomFromCategory("playing");
+                    state.affection = clamp(state.affection + 15, 0, 100);
+                    updateStatsUI();
+                    clearTimeout(state.activityTimeout);
+                    state.activityTimeout = setTimeout(() => {
+                        if (state.currentSprite === "dance") {
+                            setSprite("stand");
+                            updateStatusBadge("happy");
+                            sayPhrase("Вот это игра! Было весело! 🎉");
+                        }
+                    }, 3000);
+                }
+
+                function decayStats() {
+                    const now = Date.now();
+                    const delta = (now - state.lastActionTime) / 1000;
+                    if (delta <= 0) return;
+                    const decayAmount = delta * 0.2;
+                    state.hunger = clamp(state.hunger - decayAmount, 0, 100);
+                    state.thirst = clamp(
+                        state.thirst - decayAmount * 0.9,
+                        0,
+                        100,
+                    );
+                    state.affection = clamp(
+                        state.affection - decayAmount * 0.6,
+                        0,
+                        100,
+                    );
+                    state.lastActionTime = now;
+                    updateStatsUI();
+
+                    if (
+                        (state.hunger < 20 ||
+                            state.thirst < 20 ||
+                            state.affection < 20) &&
+                        !state.isPanic
+                    ) {
+                        if (Math.random() < 0.25) {
+                            triggerPanic();
+                            return;
+                        }
+                    }
+                    if (state.isPanic) return;
+
+                    if (state.hunger < 30 && state.currentSprite !== "eat") {
+                        updateStatusBadge("hungry");
+                        if (Math.random() < 0.4)
+                            sayRandomFromCategory("hungry");
+                    } else if (state.thirst < 30) {
+                        updateStatusBadge("thirsty");
+                        if (Math.random() < 0.4)
+                            sayRandomFromCategory("thirsty");
+                    } else if (state.affection < 30) {
+                        updateStatusBadge("sad");
+                        if (Math.random() < 0.4) sayRandomFromCategory("sad");
+                    }
+
+                    if (
+                        (state.hunger <= 0 ||
+                            state.thirst <= 0 ||
+                            state.affection <= 0) &&
+                        !state.isPanic
+                    ) {
+                        triggerPanic();
+                    }
+                }
+
+                function init() {
+                    state.posX = window.innerWidth / 2 - 65;
+                    state.posY = window.innerHeight / 2 - 80;
+                    characterEl.style.left = state.posX + "px";
+                    characterEl.style.top = state.posY + "px";
+
+                    updateStatsUI();
+                    setSprite("stand");
+                    updateStatusBadge("happy");
+                    sayPhrase("Привет! Я Рустам, твой мини-парень 💕");
+                    state.lastActionTime = Date.now();
+
+                    state.moveInterval = setInterval(() => {
+                        if (
+                            !state.isPanic &&
+                            !["eat", "poop", "cook", "sleep"].includes(
+                                state.currentSprite,
+                            )
+                        ) {
+                            moveToTarget();
+                        }
+                    }, 5000);
+
+                    state.decayInterval = setInterval(decayStats, 2000);
+
+                    state.phraseTimer = setInterval(() => {
+                        if (!state.isPanic && Math.random() < 0.3) {
+                            const status = state.currentStatus;
+                            if (phrases[status]) sayRandomFromCategory(status);
+                            else sayRandomFromCategory("happy");
+                        }
+                    }, 10000);
+
+                    state.statusTimer = setInterval(() => {
+                        if (!state.isPanic && Math.random() < 0.05) {
+                            triggerPanic();
+                        } else if (!state.isPanic && Math.random() < 0.1) {
+                            triggerBlush(4000);
+                        }
+                    }, 15000);
+
+                    state.noteTimer = setInterval(() => {
+                        if (Math.random() < 0.3) {
+                            sendNote();
+                        }
+                        if (
+                            Math.random() < 0.25 &&
+                            (state.hunger < 50 ||
+                                state.thirst < 50 ||
+                                state.affection < 50)
+                        ) {
+                            sendReminder();
+                        }
+                        if (Math.random() < 0.2) {
+                            sendLoveNote();
+                        }
+                    }, 30000);
+
+                    setTimeout(() => moveToTarget(), 2500);
+                    window.addEventListener("resize", updateBubblePosition);
+                    setInterval(updateBubblePosition, 400);
+                }
+
+                characterEl.addEventListener("click", (e) => {
+                    e.stopPropagation();
+                    pet();
+                });
+                feedBtn.addEventListener("click", (e) => {
+                    e.stopPropagation();
+                    feed();
+                });
+                waterBtn.addEventListener("click", (e) => {
+                    e.stopPropagation();
+                    water();
+                });
+                petBtn.addEventListener("click", (e) => {
+                    e.stopPropagation();
+                    pet();
+                });
+                playBtn.addEventListener("click", (e) => {
+                    e.stopPropagation();
+                    play();
+                });
+                noteClose.addEventListener("click", (e) => {
+                    e.stopPropagation();
+                    hideNote();
+                });
+
+                document
+                    .getElementById("decorTV")
+                    .addEventListener("click", (e) => {
+                        e.stopPropagation();
+                        interactWithDecor("tv");
+                    });
+                document
+                    .getElementById("decorLamp")
+                    .addEventListener("click", (e) => {
+                        e.stopPropagation();
+                        interactWithDecor("lamp");
+                    });
+                document
+                    .getElementById("decorPlant")
+                    .addEventListener("click", (e) => {
+                        e.stopPropagation();
+                        interactWithDecor("plant");
+                    });
+                document
+                    .getElementById("decorBooks")
+                    .addEventListener("click", (e) => {
+                        e.stopPropagation();
+                        interactWithDecor("books");
+                    });
+                document
+                    .getElementById("decorCookie")
+                    .addEventListener("click", (e) => {
+                        e.stopPropagation();
+                        interactWithDecor("cookie");
+                    });
+                document
+                    .getElementById("decorBed")
+                    .addEventListener("click", (e) => {
+                        e.stopPropagation();
+                        interactWithDecor("bed");
+                    });
+
+                init();
+
+                window.addEventListener("beforeunload", () => {
+                    clearInterval(state.moveInterval);
+                    clearInterval(state.decayInterval);
+                    clearInterval(state.phraseTimer);
+                    clearInterval(state.statusTimer);
+                    clearInterval(state.noteTimer);
+                    clearTimeout(window.eatTimeout);
+                    clearTimeout(window.drinkTimeout);
+                    clearTimeout(window.petTimeout);
+                    clearTimeout(state.activityTimeout);
+                    clearTimeout(state.panicTimeout);
+                    clearTimeout(state.bubbleTimeout);
+                    clearTimeout(state.blushTimer);
+                    clearTimeout(state.noteTimeout);
+                    clearTimeout(window.arriveTimeout);
+                });
+            })();
+        </script>
+    </body>
+</html>
